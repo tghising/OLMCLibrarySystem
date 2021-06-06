@@ -1,0 +1,16 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.olmcMainLayout {
+
+}
+
+#booksLabel {
+    background-color: red;
+}
+
+#newProductPurchasedDate {
+    -fx-font-family: Arial;
+    -fx-font-size: 18px;
+}

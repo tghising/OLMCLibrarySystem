@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainPane" prefHeight="600.0" prefWidth="800.0" styleClass="olmcMainLayout" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="edu.cqu.olmclibrarysystem.view.MemberView">
+    <stylesheets>
+        <URL value="@/styles/olmclibrarysystem.css" />
+    </stylesheets>
+    <left>
+        <fx:include source="Navbar.fxml" />
+    </left>
+    <center>
+        <Pane fx:id="contentLayout" prefHeight="600.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane fx:id="dashboardContent" prefHeight="600.0" prefWidth="700.0">
+                    <children>
+                        <Label layoutX="21.0" layoutY="26.0" prefHeight="19.0" prefWidth="240.0" text="New Member Details" textFill="#48a5ea" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="saveMemberButton" layoutX="138.0" layoutY="285.0" mnemonicParsing="false" onAction="#addMember" prefHeight="30.0" prefWidth="70.0" style="-fx-font-family: Arial; -fx-background-color: #1ab394; -fx-font-size: 16;" text="Save" textFill="WHITE">
+                            <font>
+                                <Font name="Arial" size="15.0" />
+                            </font>
+                        </Button>
+                        <Button layoutX="253.0" layoutY="282.0" mnemonicParsing="false" onAction="#resetAddMemberForm" prefHeight="36.0" prefWidth="70.0" text="Clear" AnchorPane.bottomAnchor="283.8" AnchorPane.topAnchor="285.0">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Button>
+                        <Label layoutX="10.0" layoutY="351.0" text="List of all Members" AnchorPane.leftAnchor="10.0">
+                            <font>
+                                <Font name="Arial Bold" size="16.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="membersListTable" layoutX="19.0" layoutY="373.0" prefHeight="225.0" prefWidth="690.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                            <columns>
+                                <TableColumn fx:id="membersIdColumn" prefWidth="51.0" text="ID" />
+                                <TableColumn fx:id="membersFullNameColumn" prefWidth="184.79998779296875" text="Full Name" />
+                                <TableColumn fx:id="membersEmailAddressColumn" prefWidth="119.20001220703125" text="Email" />
+                                <TableColumn fx:id="membersPhoneNumberColumn" prefWidth="132.79998779296875" text="Phone Number" />
+                                <TableColumn fx:id="membersAddressColumn" prefWidth="200.4000244140625" text="Address" />
+                            </columns>
+                        </TableView>
+                      <VBox prefHeight="250.0" prefWidth="116.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0">
+                          <children>
+                              <Label prefHeight="30.0" prefWidth="103.0" style="-fx-font-family: Arial" text="Full Name">
+                                  <VBox.margin>
+                                      <Insets top="10.0" />
+                                  </VBox.margin>
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                              <Label prefHeight="30.0" prefWidth="103.0" style="-fx-font-family: Arial" text="Email Address">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                                  <VBox.margin>
+                                      <Insets top="10.0" />
+                                  </VBox.margin>
+                              </Label>
+                              <Label prefHeight="30.0" prefWidth="118.0" style="-fx-font-family: Arial" text="Phone Number">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                                  <VBox.margin>
+                                      <Insets top="10.0" />
+                                  </VBox.margin>
+                              </Label>
+                              <Label alignment="TOP_LEFT" prefHeight="90.0" prefWidth="103.0" style="-fx-font-family: Arial" text="Address">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                                  <VBox.margin>
+                                      <Insets top="10.0" />
+                                  </VBox.margin>
+                              </Label>
+                          </children>
+                      </VBox>
+                      <VBox layoutX="138.0" prefHeight="224.0" prefWidth="210.0" AnchorPane.leftAnchor="138.0" AnchorPane.topAnchor="50.0">
+                          <children>
+                              <TextField fx:id="newMemberFullname" prefHeight="30.0" prefWidth="103.0" style="-fx-font-family: Arial; -fx-font-size: 16;">
+                                  <VBox.margin>
+                                      <Insets top="10.0" />
+                                  </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="newMemberEmailAddress" prefHeight="30.0" prefWidth="103.0" style="-fx-font-size: 16; -fx-font-family: Arial;">
+                                  <VBox.margin>
+                                      <Insets top="10.0" />
+                                  </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="newMemberPhoneNumber" prefHeight="30.0" prefWidth="103.0" style="-fx-font-size: 16; -fx-font-family: Arial;">
+                                  <VBox.margin>
+                                      <Insets top="10.0" />
+                                  </VBox.margin>
+                              </TextField>
+                              <TextArea fx:id="newMemberAddress" prefHeight="76.0" prefWidth="232.0" style="-fx-font-size: 16; -fx-font-family: Arial;">
+                                  <VBox.margin>
+                                      <Insets top="10.0" />
+                                  </VBox.margin>
+                              </TextArea>
+                          </children>
+                      </VBox>
+                    </children>
+                </AnchorPane>
+            </children>
+        </Pane>
+    </center>
+</BorderPane>

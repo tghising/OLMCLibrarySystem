@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" fx:controller="edu.cqu.olmclibrarysystem.view.LoginView">
+    <center>
+        <Pane BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <children>
+                <AnchorPane prefHeight="600.0" prefWidth="800.0">
+                    <children>
+                        <Label layoutX="32.0" layoutY="36.0" prefHeight="38.0" prefWidth="285.0" text="Sign In"
+                               textFill="#48a5ea" AnchorPane.bottomAnchor="538.0" AnchorPane.leftAnchor="15.0"
+                               AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="24.0">
+                            <font>
+                                <Font name="Arial Bold" size="24.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="mainLibrarianEmail" layoutX="35.0" layoutY="86.0" prefHeight="33.0"
+                                   prefWidth="275.0" promptText="Email" AnchorPane.leftAnchor="15.0"
+                                   AnchorPane.rightAnchor="509.0" AnchorPane.topAnchor="86.0">
+                            <font>
+                                <Font name="Arial" size="18.0"/>
+                            </font>
+                        </TextField>
+                        <PasswordField fx:id="mainLibrarianPassword" layoutX="15.0" layoutY="146.0" prefHeight="33.0"
+                                       prefWidth="276.0" promptText="Password" AnchorPane.leftAnchor="15.0"
+                                       AnchorPane.rightAnchor="509.0">
+                            <font>
+                                <Font name="Arial" size="18.0"/>
+                            </font>
+                        </PasswordField>
+                        <Button fx:id="signInMainLibrarianButton" layoutX="15.0" layoutY="205.0" mnemonicParsing="false"
+                                onAction="#signIn" prefHeight="33.0" prefWidth="106.0"
+                                style="-fx-background-color: #48a5ea;" text="Sign In" textFill="WHITE"
+                                AnchorPane.leftAnchor="15.0">
+                            <font>
+                                <Font name="Arial Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                        <Label fx:id="signInValidation" layoutX="130.0" layoutY="205.0" prefHeight="33.0"
+                               prefWidth="267.0" textFill="RED">
+                            <font>
+                                <Font name="Arial" size="15.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children>
+        </Pane>
+    </center>
+</BorderPane>

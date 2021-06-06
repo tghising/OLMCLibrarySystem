@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainPane" prefHeight="600.0" prefWidth="800.0" styleClass="olmcMainLayout" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cqu.olmclibrarysystem.view.DashboardView">
+    <stylesheets>
+        <URL value="@/styles/olmclibrarysystem.css" />
+    </stylesheets>
+    <left>
+        <fx:include source="Navbar.fxml" />
+    </left>
+    <center>
+        <Pane fx:id="contentLayout" prefHeight="600.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane fx:id="dashboardLayout" prefHeight="600.0" prefWidth="700.0" visible="false">
+                    <children>
+                        <Label layoutX="21.0" layoutY="26.0" prefHeight="19.0" prefWidth="240.0" text="Dashboard" textFill="#48a5ea" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <HBox layoutX="30.0" layoutY="91.0" prefHeight="30.0" prefWidth="684.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0">
+                            <children>
+
+                                <Button mnemonicParsing="false" onAction="#getAllOverDueReturnBooks" prefHeight="31.0" prefWidth="174.0" style="-fx-font-family: Arial; -fx-font-size: 16" text="Outstanding Returns">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Button>
+
+                            </children>
+                        </HBox>
+
+                        <Label layoutX="10.0" layoutY="318.0" text="All Issued Books" AnchorPane.leftAnchor="10.0">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="95.0" text="All Overdue Books" AnchorPane.leftAnchor="10.0">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="overdueBooksTable" layoutX="15.0" layoutY="121.0" prefHeight="185.0" prefWidth="680.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="121.0">
+                            <columns>
+                                <TableColumn fx:id="dueBookId" prefWidth="74.39996337890625" text="Book ID" />
+                                <TableColumn fx:id="dueBookTitle" minWidth="0.0" prefWidth="185.5999755859375" text="Book Title" />
+                                <TableColumn fx:id="dueBookMember" prefWidth="160.0" text="Member Name" />
+                                <TableColumn fx:id="dueBookIssuedDate" prefWidth="137.60003662109375" text="Issued Date" />
+                                <TableColumn fx:id="dueBookDueDate" prefWidth="120.800048828125" text="Due Date" />
+                            </columns>
+                        </TableView>
+                        <TableView fx:id="allIssuedBooksTable" layoutX="12.0" layoutY="345.0" prefHeight="250.0" prefWidth="680.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="345.0">
+                            <columns>
+                                <TableColumn fx:id="issueBookId" prefWidth="70.4000244140625" text="Book ID" />
+                                <TableColumn fx:id="issueBookTitle" minWidth="0.0" prefWidth="192.00006103515625" text="Book Title" />
+                                <TableColumn fx:id="issueBookMemberName" prefWidth="164.800048828125" text="Member Name" />
+                                <TableColumn fx:id="issueBookIssueDate" prefWidth="123.9998779296875" text="Issued Date" />
+                                <TableColumn fx:id="issueBookDueDate" prefWidth="123.9998779296875" text="Due Date" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="overDueReturnsLayout" prefHeight="600.0" prefWidth="700.0">
+                    <children>
+                        <Label fx:id="dashboardLabel" layoutX="21.0" layoutY="26.0" prefHeight="19.0" prefWidth="240.0" text="Dashboard" textFill="#48a5ea" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <HBox layoutX="30.0" layoutY="91.0" prefHeight="30.0" prefWidth="684.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0">
+                            <children>
+
+                                <Button mnemonicParsing="false" onAction="#goToDashboard" prefHeight="31.0" prefWidth="103.0" style="-fx-font-family: Arial; -fx-font-size: 16" text="Dashboard">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Button>
+
+                            </children>
+                        </HBox>
+                        <Label layoutX="10.0" layoutY="95.0" text="All Overdue Return Books" AnchorPane.leftAnchor="10.0">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="overDueReturnBooksTable" layoutX="15.0" layoutY="127.0" prefHeight="468.0" prefWidth="680.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="127.0">
+                            <columns>
+                                <TableColumn fx:id="overDueReturnBookId" prefWidth="64.800048828125" text="Book ID" />
+                                <TableColumn fx:id="overDueReturnBookTitle" minWidth="0.0" prefWidth="195.199951171875" text="Book Title" />
+                                <TableColumn fx:id="overDueReturnBookMember" prefWidth="172.0" text="Member Name" />
+                                <TableColumn fx:id="overDueReturnBookDueDate" prefWidth="126.39996337890625" text="Due Date" />
+                                <TableColumn fx:id="overDueReturnBookReturnDate" prefWidth="130.40008544921875" text="Return Date" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </children>
+        </Pane>
+    </center>
+</BorderPane>

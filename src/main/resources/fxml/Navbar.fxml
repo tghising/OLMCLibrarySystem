@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="navBar" prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #2f4050;" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="edu.cqu.olmclibrarysystem.view.Navbar">
+    <stylesheets>
+       <URL value="@/styles/olmclibrarysystem.css" />
+    </stylesheets>
+    <children>
+        <Circle fx:id="userImage" fill="#48a5ea" radius="50.0" stroke="GREEN" strokeType="INSIDE">
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </Circle>
+        <Label fx:id="loggedInUser" contentDisplay="CENTER" prefHeight="21.0" prefWidth="134.0" style="-fx-background-color: #eff0f1;" text="Tikaraj Ghising" textAlignment="CENTER" textFill="#008060">
+            <font>
+                <Font name="Century Gothic Bold" size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" left="3.0" right="3.0" top="5.0" />
+            </VBox.margin>
+        </Label>
+        <Button fx:id="signOut" mnemonicParsing="false" onAction="#signOut" prefHeight="9.0" prefWidth="68.0" text="Sign Out">
+            <VBox.margin>
+                <Insets bottom="5.0" left="3.0" right="3.0" />
+            </VBox.margin>
+            <font>
+                <Font name="Arial Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#goToDashBoard" prefHeight="40.0" prefWidth="175.0" text="Dashboard">
+            <VBox.margin>
+                <Insets bottom="5.0" left="3.0" right="3.0" top="25.0" />
+            </VBox.margin>
+            <font>
+                <Font name="Arial Bold" size="12.0" />
+            </font>
+        </Button>
+
+        <Button fx:id="booksButton" mnemonicParsing="false" onAction="#goToBooks" prefHeight="40.0" prefWidth="175.0" text="Books" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets bottom="5.0" left="3.0" right="3.0" top="5.0" />
+            </VBox.margin>
+            <font>
+                <Font name="Arial Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button mnemonicParsing="false" onAction="#gotoAuthors" prefHeight="40.0" prefWidth="175.0" text="Authors" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets bottom="5.0" left="3.0" right="3.0" top="5.0" />
+            </VBox.margin>
+            <font>
+                <Font name="Arial Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button fx:id="membersButton" mnemonicParsing="false" onAction="#goToMembers" prefHeight="40.0" prefWidth="175.0" text="Members" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets bottom="5.0" left="3.0" right="3.0" top="5.0" />
+            </VBox.margin>
+            <font>
+                <Font name="Arial Bold" size="12.0" />
+            </font>
+        </Button>
+      <Button fx:id="donorsButton" mnemonicParsing="false" onAction="#gotToDonors" prefHeight="40.0" prefWidth="175.0" text="Donors">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="5.0" left="3.0" right="3.0" top="5.0" />
+         </VBox.margin>
+      </Button>
+
+        <Button fx:id="librariansButton" mnemonicParsing="false" onAction="#gotToLibrarians" prefHeight="40.0" prefWidth="175.0" text="Librarians">
+            <font>
+                <Font name="Arial Bold" size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" left="3.0" right="3.0" top="5.0" />
+            </VBox.margin>
+        </Button>
+    </children>
+</VBox>

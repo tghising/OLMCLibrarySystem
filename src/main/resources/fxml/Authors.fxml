@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainPane" prefHeight="600.0" prefWidth="800.0" styleClass="olmcMainLayout" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cqu.olmclibrarysystem.view.AuthorView">
+    <stylesheets>
+        <URL value="@/styles/olmclibrarysystem.css" />
+    </stylesheets>
+    <left>
+        <fx:include source="Navbar.fxml" />
+    </left>
+
+    <center>
+        <Pane fx:id="contentLayout" prefHeight="600.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane fx:id="listsAuthorLayout" prefHeight="600.0" prefWidth="700.0">
+                    <children>
+                        <Label layoutX="21.0" layoutY="26.0" prefHeight="19.0" prefWidth="240.0" text="Authors" textFill="#48a5ea" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+                        <Button fx:id="newAuthorButton" layoutX="10.0" layoutY="52.0" onAction="#addAuthorForm" prefHeight="33.0" prefWidth="102.0" style="-fx-background-color: #1ab394;" text="New Author" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="52.0">
+                            <font>
+                                <Font name="Arial" size="15.0" />
+                            </font>
+                        </Button>
+                        <TableView fx:id="listAuthorTableView" layoutX="55.0" layoutY="112.0" prefHeight="495.0" prefWidth="439.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="256.0" AnchorPane.topAnchor="100.0">
+                            <columns>
+                                <TableColumn fx:id="authorId" prefWidth="134.0" text="ID" />
+                                <TableColumn fx:id="authorName" prefWidth="303.2000732421875" text="Name" />
+                            </columns>
+                        </TableView>
+
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="addAuthorForm" prefHeight="600.0" prefWidth="700.0" visible="false">
+                    <children>
+                        <Label layoutX="21.0" layoutY="26.0" prefHeight="19.0" prefWidth="240.0" text="New Author" textFill="#48a5ea" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+                        <Button layoutX="10.0" layoutY="140.0" onAction="#addAuthor" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #1ab394;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="427.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="140.0">
+                            <font>
+                                <Font name="Arial" size="15.0" />
+                            </font>
+                        </Button>
+                        <Button layoutX="131.0" layoutY="140.0" onAction="#getAllAuthors" prefHeight="33.0" prefWidth="76.0" text="Cancel">
+                            <font>
+                                <Font name="Arial" size="15.0" />
+                            </font>
+                        </Button>
+                        <VBox fx:id="newBookVBox" layoutY="45.0" prefHeight="81.0" prefWidth="317.0" AnchorPane.bottomAnchor="469.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="373.0" AnchorPane.topAnchor="60.0">
+                            <TextField fx:id="newAuthorFullName" prefWidth="323.0" promptText="Full Name">
+                                <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                </VBox.margin>
+                                <font>
+                                    <Font name="Arial" size="18.0" />
+                                </font>
+                            </TextField>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </children>
+        </Pane>
+    </center>
+</BorderPane>
