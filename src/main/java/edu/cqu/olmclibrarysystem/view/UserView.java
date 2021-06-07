@@ -166,7 +166,7 @@ public class UserView implements Initializable, IViewUser {
         updateListLibrarianButton.setDisable(true);
         this.deleteLibrarianButton.setDisable(true);
     }
-
+    
     private void clearLibrarianForm() {
         newLibrarianName.clear();
         newLibrarianEmail.clear();
@@ -175,7 +175,7 @@ public class UserView implements Initializable, IViewUser {
         newLibrarianPhoneNumber.clear();
         newLibrarianAddress.clear();
         newLibrarianRole.getSelectionModel().clearSelection();
-
+           
     }
 
     @Override
@@ -201,9 +201,9 @@ public class UserView implements Initializable, IViewUser {
         if (user != null) {
             updateListLibrarianButton.setDisable(false);
             if (!user.getEmail().equals(loggedInUser.getEmail())) {
-                deleteLibrarianButton.setDisable(false);
+            deleteLibrarianButton.setDisable(false);
             } else {
-                deleteLibrarianButton.setDisable(true);
+                 deleteLibrarianButton.setDisable(true);
             }
             this.selectedUser = user;
         } else {

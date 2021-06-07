@@ -234,16 +234,34 @@ public class BookView implements Initializable, IViewBook {
         Member issueMember = issueMemberList.getSelectionModel().getSelectedItem();
         Book issueBook = issueBookList.getSelectionModel().getSelectedItem();
         LocalDate dueDate = bookDueDate.getValue();
-
         if (!issueBookValidation()) {
-            this.memberPresenter.addMemberBorrowedBook(new MemberBorrowedBook(issueMember, issueBook, new Date(), helper.getDateFromLocalDate(dueDate)));
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Confirmation");
-            alert.setHeaderText(null);
-            alert.setContentText("Book " + issueBook.getTitle() + " has been issued to " + issueMember.getFullName() + " successfully.");
-            alert.showAndWait();
-            //TODO pull all
-            getAllBooks();
+            boolean issueBookCheck = this.bookPresenter.bookIssueCheck(issueMember, issueBook);
+            if (issueBookCheck) {
+                int bookAvailableStocks = this.bookPresenter.checkBookAvailability(issueBook.getBookId());
+                if (bookAvailableStocks > 0) {
+                    this.memberPresenter.addMemberBorrowedBook(new MemberBorrowedBook(issueMember, issueBook, new Date(), helper.getDateFromLocalDate(dueDate)));
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Confirmation");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Book " + issueBook.getTitle() + " has been issued to " + issueMember.getFullName() + " successfully.");
+                    alert.showAndWait();
+                    //TODO pull all
+                    getAllBooks();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Book " + issueBook.getTitle() + " doesn't have anymore stocks. Choose another book to issue.");
+                    alert.showAndWait();
+                    return;
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Book " + issueBook.getTitle() + " has already been issued to " + issueMember.getFullName());
+                alert.showAndWait();
+            }
         }
     }
 
@@ -318,7 +336,6 @@ public class BookView implements Initializable, IViewBook {
     @Override
     @FXML
     public void searchBook(ActionEvent event) {
-
         String keyword = searchBookKey.getText();
         String searchCriteria = searchByTitleOrAuthor.getValue();
         deleteBookButton.setDisable(true);

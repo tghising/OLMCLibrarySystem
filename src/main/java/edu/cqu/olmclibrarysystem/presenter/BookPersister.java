@@ -40,6 +40,8 @@ public class BookPersister {
     private PreparedStatement findBookIDsIssuedToMember;
     private PreparedStatement updateReturnDate;
     private PreparedStatement updateBookStocksAfterReturn;
+    private PreparedStatement findBookAvailability;
+    private PreparedStatement checkBookIssue;
     private DatabaseUtility utility;
 
     // constructor connect MySQL database, create database if not exist, create tables if not exist, insert records into tables and
@@ -68,6 +70,8 @@ public class BookPersister {
                 findBookIDsIssuedToMember = connection.prepareStatement("SELECT borrowed_book_id FROM member_borrowed_book WHERE member_id = ? AND return_date IS NULL");
                 updateReturnDate = connection.prepareStatement("UPDATE member_borrowed_book SET return_date = ? WHERE member_id = ? AND borrowed_book_id = ?");
                 updateBookStocksAfterReturn = connection.prepareStatement("UPDATE book SET available = available + 1 WHERE book_id = ?");
+                findBookAvailability = connection.prepareStatement("SELECT available FROM book WHERE book_id = ?");
+                checkBookIssue = connection.prepareStatement("SELECT * FROM member_borrowed_book WHERE member_id = ? AND borrowed_book_id = ?");
             }
         } catch (SQLException e) {
             System.out.println("Connection Failed!");
@@ -405,5 +409,43 @@ public class BookPersister {
         } catch (SQLException e) {
             System.out.println("SQL Exception: " + e.getMessage());
         }
+    }
+
+    public int findBookStock(Integer bookID) {
+        Integer bookStocks = 0;
+        try {
+            findBookAvailability.setInt(1, bookID);
+
+            ResultSet bookStocksResultSet = findBookAvailability.executeQuery();
+
+            while (bookStocksResultSet.next()) {
+                bookStocks = bookStocksResultSet.getInt("available");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+
+        return bookStocks;
+    }
+
+    public boolean bookIssueCheck(Member issueMember, Book issueBook) {
+        Boolean bookIssueCheck = true;
+
+        try {
+            checkBookIssue.setInt(1, issueMember.getMemberId());
+            checkBookIssue.setInt(2, issueBook.getBookId());
+
+            ResultSet checkBookIssueResult = checkBookIssue.executeQuery();
+
+            while (checkBookIssueResult.next()) {
+                bookIssueCheck = false;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+
+        return bookIssueCheck;
     }
 }

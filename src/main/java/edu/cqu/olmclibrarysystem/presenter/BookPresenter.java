@@ -62,5 +62,12 @@ public class BookPresenter {
     public void returnBook(Date currentDate, Member selectedMember, Book selectedBook) {
         persister.returnBook(currentDate, selectedMember, selectedBook);
     }
-
+    
+    public int checkBookAvailability(Integer bookID) {
+        return persister.findBookStock(bookID);
+    }
+    
+    public boolean bookIssueCheck(Member issueMember, Book issueBook) {
+        return this.persister.bookIssueCheck(issueMember, issueBook);
+    }
 }

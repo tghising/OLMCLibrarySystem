@@ -119,14 +119,13 @@ public class DonorView implements Initializable, IViewDonor {
     @FXML
     private TableColumn<DonorDonatedBooksValues, String> donorNamerColumn = new TableColumn<>();
 
-    private static final String PASSWORD_REGEX = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"; // password regex
     private static final String EMAIL_REGEX = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$"; // email regex
     private static final String FULL_NAME_REGEX = "^[A-Z][a-zA-Z]{2,}(?: [A-Z][a-zA-Z]*){0,2}$"; // full name regex
     private static final String PHONE_REGEX = "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}"; // 10 digits phone number regex
     private static final String NUMERIC_REGEX = "\\d+";
-
+    
     private HelperUtility helperUtility;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.donorPresenter = new DonorPresenter();
@@ -225,29 +224,29 @@ public class DonorView implements Initializable, IViewDonor {
     private boolean addDonorValidation() {
         boolean boolValue = false;
         String validationTitle = "Donor registrartion";
-
-        if (newDonorFullname.getText().isEmpty() || !newDonorFullname.getText().matches(FULL_NAME_REGEX)) {
-            newDonorFullname.requestFocus();
-            helperUtility.inputErrorValidation(validationTitle, null, "Name must be non-numeric and start with \nUppercase letter and at least 3 characters.");
-            boolValue = true;
-
-        } else if (newDonorEmailAddress.getText().isEmpty() || !newDonorEmailAddress.getText().matches(EMAIL_REGEX)) {
-            newDonorEmailAddress.requestFocus();
-            helperUtility.inputErrorValidation(validationTitle, null, "Please enter a valid email address.");
-            boolValue = true;
-
-        } else if (newDonorPhoneNumber.getText().isEmpty() || !newDonorPhoneNumber.getText().matches(PHONE_REGEX)) {
-            newDonorPhoneNumber.requestFocus();
-            helperUtility.inputErrorValidation(validationTitle, null, "Please enter valid 10 digits phone number.");
-            boolValue = true;
-
-        } else if (newDonorAddress.getText().isEmpty()) {
-            newDonorAddress.requestFocus();
-            helperUtility.inputErrorValidation(validationTitle, null, "Please enter valid address.");
-            boolValue = true;
-
-        }
-
+        
+         if (newDonorFullname.getText().isEmpty() || !newDonorFullname.getText().matches(FULL_NAME_REGEX)) {
+                newDonorFullname.requestFocus();
+                helperUtility.inputErrorValidation(validationTitle, null, "Name must be non-numeric and start with \nUppercase letter and at least 3 characters.");
+                boolValue = true;
+        
+            } else if (newDonorEmailAddress.getText().isEmpty() || !newDonorEmailAddress.getText().matches(EMAIL_REGEX)) {
+                newDonorEmailAddress.requestFocus();
+                helperUtility.inputErrorValidation(validationTitle, null, "Please enter a valid email address.");
+                boolValue = true;
+          
+            } else if (newDonorPhoneNumber.getText().isEmpty() || !newDonorPhoneNumber.getText().matches(PHONE_REGEX)) {
+                newDonorPhoneNumber.requestFocus();
+                helperUtility.inputErrorValidation(validationTitle, null, "Please enter valid 10 digits phone number.");
+                boolValue = true;
+                
+            } else if (newDonorAddress.getText().isEmpty()) {
+                newDonorAddress.requestFocus();
+                helperUtility.inputErrorValidation(validationTitle, null, "Please enter valid address.");
+                boolValue = true;
+        
+            }
+        
         return boolValue;
     }
 
@@ -257,36 +256,36 @@ public class DonorView implements Initializable, IViewDonor {
         newDonorPhoneNumber.clear();
         newDonorAddress.clear();
     }
-
+    
     private boolean addDonateBooksValidation() {
         boolean boolValue = false;
         String validationTitle = "Input validation";
-
+        
         if (donorList.getSelectionModel().isEmpty()) {
             donorList.requestFocus();
             helperUtility.inputErrorValidation(validationTitle, null, "Please select Donor");
             boolValue = true;
         } else if (donateBookTitle.getText().isEmpty()) {
-            donateBookTitle.requestFocus();
-            helperUtility.inputErrorValidation(validationTitle, null, "Please enter valid book title");
-            boolValue = true;
-
+                donateBookTitle.requestFocus();
+                helperUtility.inputErrorValidation(validationTitle, null, "Please enter valid book title");
+                boolValue = true;
+        
         } else if (donateBookPrice.getText().isEmpty() || !donateBookPrice.getText().matches(NUMERIC_REGEX)) {
-            donateBookPrice.requestFocus();
-            helperUtility.inputErrorValidation(validationTitle, null, "Please enter valid price");
-            boolValue = true;
-
-        } else if (donateBookAuthor.getValue() == null) {
-            donateBookAuthor.requestFocus();
-            helperUtility.inputErrorValidation(validationTitle, null, "Please select author");
-            boolValue = true;
-
-        } else if (donateBookQuantity.getText().isEmpty() || !donateBookQuantity.getText().matches(NUMERIC_REGEX)) {
-            donateBookQuantity.requestFocus();
+                donateBookPrice.requestFocus();
+                helperUtility.inputErrorValidation(validationTitle, null, "Please enter valid price");
+                boolValue = true;
+          
+            } else if (donateBookAuthor.getValue() == null) {
+                donateBookAuthor.requestFocus();
+                helperUtility.inputErrorValidation(validationTitle, null, "Please select author");
+                boolValue = true;
+                
+            } else if (donateBookQuantity.getText().isEmpty() || !donateBookQuantity.getText().matches(NUMERIC_REGEX)) {
+                donateBookQuantity.requestFocus();
             helperUtility.inputErrorValidation(validationTitle, null, "Please enter valid quantity");
-            boolValue = true;
-        }
-
+                boolValue = true;
+            }
+        
         return boolValue;
     }
 
@@ -325,10 +324,10 @@ public class DonorView implements Initializable, IViewDonor {
         if (!addDonateBooksValidation()) {
             Book newDonatedBook = new Book(newDonatedBookTitle, Double.parseDouble(newDonatedBookPrice), newDonatedBookAuthor, Integer.parseInt(newDonatedBookQuantity));
             this.donorPresenter.addDonatedBook(newDonatedBook);
-
+            
             List<Book> allBooks = this.donorPresenter.getAllBooks();
             Book insertedBook = allBooks.get(allBooks.size() - 1);
-
+            
             DonorDonatedBook donorDonatedBook = new DonorDonatedBook(insertedBook, selectedDonor, Integer.parseInt(newDonatedBookQuantity));
             this.donorPresenter.donateBook(donorDonatedBook);
             
@@ -337,7 +336,7 @@ public class DonorView implements Initializable, IViewDonor {
             donatedBooksList.setItems(allDonatedBooks);
             this.showDonorsBookLayout();
             this.resetDonateBookForm();
-
+            
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Confirmation");
             alert.setHeaderText(null);
@@ -420,6 +419,6 @@ public class DonorView implements Initializable, IViewDonor {
 
         public void setDonor(String donor) {
             this.donor = donor;
-        }
+        }      
     }
 }

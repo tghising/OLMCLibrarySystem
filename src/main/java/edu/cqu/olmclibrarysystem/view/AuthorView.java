@@ -85,7 +85,7 @@ public class AuthorView implements Initializable, IViewAuthor {
             clearAuthorForm();
         }
     }
-
+    
     private void clearAuthorForm() {
         newAuthorFullName.clear();
     }
