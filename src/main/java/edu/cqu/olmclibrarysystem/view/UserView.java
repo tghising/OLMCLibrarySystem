@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.scene.control.ButtonBar.ButtonData;
 
 /**
  * UserView: User View of MVP for OLMCLibrarySystem
@@ -245,7 +244,7 @@ public class UserView implements Initializable, IViewUser {
                 Alert confirmationAlert = new Alert(Alert.AlertType.INFORMATION);
                 confirmationAlert.setTitle("Confirmation");
                 confirmationAlert.setHeaderText(null);
-                confirmationAlert.setContentText("Librarina Password has been updated successfully.");
+                confirmationAlert.setContentText("Librarian Password has been updated successfully.");
                 confirmationAlert.showAndWait();
             }
         }
@@ -298,6 +297,12 @@ public class UserView implements Initializable, IViewUser {
                     User user = new User(librarianName, librarianEmail, librarianPassword, librarianPhoneNumber, librarianAddress);
                     user.setRole(UserRole.getType(librarianRole));
                     this.presenter.add(user);
+                    Alert confirmationAlert = new Alert(Alert.AlertType.INFORMATION);
+                    confirmationAlert.setTitle("Confirmation");
+                    confirmationAlert.setHeaderText(null);
+                    confirmationAlert.setContentText("New Librarian has been successfully added.");
+                    confirmationAlert.showAndWait();
+
                     getAllLibrarians();
                     this.deleteLibrarianButton.setDisable(false);
                     this.updateListLibrarianButton.setDisable(false);

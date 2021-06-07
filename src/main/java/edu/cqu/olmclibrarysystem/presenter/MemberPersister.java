@@ -169,12 +169,9 @@ public class MemberPersister {
                 Date issueDate = borrowedBookResult.getDate("issue_date");
                 Date dueDate = borrowedBookResult.getDate("due_date");
                 Date returnDate = borrowedBookResult.getDate("return_date");
-                System.out.println("returnDate = " + returnDate);
-                System.out.println("member_id = " + memberId);
 
                 Member borrowedMember = findMemberByMemberId(memberId);
                 Book borrowedBook = bookPersister.getBookByBookId(borrowedBookId);
-                System.out.println("borrowedBook = " + borrowedBook);
 
                 MemberBorrowedBook memberBorrowedBook = new MemberBorrowedBook();
                 memberBorrowedBook.setBorrowerMember(borrowedMember);
